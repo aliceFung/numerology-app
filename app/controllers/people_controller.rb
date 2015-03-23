@@ -8,7 +8,7 @@ get '/people/:id' do
 #    @last_name = @person[:last_name]
 #    @birthdate = @person[:birthdate]
     birthdate_string = @person.birthdate.strftime("%m%d%Y")
-    birth_path_num = Person.birth_path_num(birthdate_string)
+    birth_path_num = Person.get_birth_path_num(birthdate_string)
     @message = Person.numerology_msg(birth_path_num)
     erb :"/people/show"
 end

@@ -5,7 +5,7 @@ set :bind, '0.0.0.0'
 #for duplicate code in get '/:birthdate', post '/'
     def setup_index_view
         birthdate = params[:birthdate].gsub("-","")
-        @birth_path_num = Person.birth_path_num(birthdate)
+        @birth_path_num = Person.get_birth_path_num(birthdate)
         @message = Person.numerology_msg (@birth_path_num)
         "#{@message}"
         erb :index
