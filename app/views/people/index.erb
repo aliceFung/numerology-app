@@ -1,5 +1,5 @@
-<h1>People</h1>
-<table>
+<h3>People</h3>
+<table class="table table-striped">
     <thead>
     <th>Name</th>
     <th>Birthdate</th>
@@ -13,7 +13,7 @@
     </a>
             </td>
             <td>
-            <%= "#{person.birthdate}" %>
+            <%= "#{person.birthdate.strftime("%F")}" %>
             </td>
         </tr>
     <% end %>
