@@ -12,3 +12,9 @@ get '/people/:id' do
     @message = Person.numerology_msg(birth_path_num)
     erb :"/people/show"
 end
+
+get '/people' do
+    @people = Person.all
+    erb :"/people/index"
+end
+    
