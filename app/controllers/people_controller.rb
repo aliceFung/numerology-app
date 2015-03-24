@@ -42,3 +42,9 @@ put '/people/:id' do
     person.save
     redirect "/people/#{person.id}"
 end
+
+delete '/people/:id' do
+    person = Person.find(params[:id])
+    person.destroy
+    redirect "/people"
+end
