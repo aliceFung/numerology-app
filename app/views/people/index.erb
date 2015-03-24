@@ -3,6 +3,7 @@
     <thead>
     <th>Name</th>
     <th>Birthdate</th>
+        <th>Edit</th>
     </thead>
     <tbody>
     <% @people.each do |person| %>
@@ -14,6 +15,9 @@
             </td>
             <td>
             <%= "#{person.birthdate}" %>
+            </td>
+            <td>
+            <a href= "<%= "/people/#{person.id}/edit" %>">Edit</a>
             </td>
         </tr>
     <% end %>
