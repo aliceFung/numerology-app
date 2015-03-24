@@ -11,17 +11,19 @@ get '/people/new' do
     erb :"/people/new"
 end
 
-#post '/people' do
-#    if Person.valid_birthdate(params[:birthdate])
-#        birthdate = params[:birthdate]
-#    else
-#        birthdate = Date.strftime(params[:birthdate], "%m%d%Y")
-#    end
+post '/people' do
+    if Person.valid_birthdate(params[:birthdate])
+        birthdate = params[:birthdate]
+    elsif birthdate.nil?
+        birthdate=Time.now
+    else
+        birthdate = Date.strptime(params[:birthdate], "%m%d%Y")
+    end
     
-#    @person = Person.create(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
+    person = Person.create(first_name: params[:first_name], last_name: params[:last_name], birthdate: birthdate)
 #    @id = person.id
-#    redirect "/people/#{@person.id}"
-#end
+    redirect "/people/#{person.id}"
+end
 
 get '/people/:id' do
 #    "This is a person show page"
