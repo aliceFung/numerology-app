@@ -8,10 +8,33 @@ module ApplicationHelper
         @method
     end
     
-#    def people_form_action(person)
-#        if person.new_record?
-#            @action = "<%= "/people/#{@person.id}" %>"
-#        else
-#            @action = "/people"
-#    end
+    def people_form_action(person)
+        if person.new_record?
+            @action = "/people"
+        else
+            @action ="/people/#{@person.id}"
+            
+        end
+        @action
+    end
+    
+    def people_form_id(person)
+        if person.new_record?
+            @id = "new-person"
+        else
+            @id = "person-#{person.id}"
+        end
+        @id
+    end
+        
+    
+    def people_form_class(person)
+        if person.new_record?
+            @class = "new-person"
+        else
+            @class = "edit-person"
+        end
+        @class
+    end
+    
 end
