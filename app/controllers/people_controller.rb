@@ -1,8 +1,6 @@
 require 'sinatra'
 set :bind, '0.0.0.0'
 
-#@note=""
-
 get '/people' do
     @people = Person.all
     erb :"/people/index"
@@ -18,16 +16,12 @@ post '/people' do
     if @person.valid?
         if params[:birthdate].include?("-")
             birthdate = params[:birthdate]
-#        elsif !Person.valid_birthdate(birthdate.gsub("-",""))
-#            @errors = "You should enter a valid birthdate in the form of mmddyyyy."
-#            erb :"/people/new"
         else
             birthdate = DateTime.strptime(params[:birthdate], "%m%d%Y") #careful: interprets input as DD-MM-YY; if entered as MM-DD-YY && DD >12, birthdate error.
         end
         @person.save
         redirect "/people/#{person.id}"
     else
-#        @error = "The data you entered isn't valid"
         @errors = ''
         @person.errors.full_messages.each do |message|
             @errors = "#{@errors} #{message}."
@@ -50,12 +44,20 @@ get '/people/:id/edit' do
 end
 
 put '/people/:id' do
-    person = Person.find(params[:id])
-    person.first_name = params[:first_name]
-    person.last_name = params[:last_name]
-    person.birthdate = params[:birthdate]
-    person.save
-    redirect "/people/#{person.id}"
+    @person = Person.find(params[:id])
+    @person.first_name = params[:first_name]
+    @person.last_name = params[:last_name]
+    @person.birthdate = params[:birthdate]
+    if @person.valid?
+        @person.save
+        redirect "/people/#{@person.id}"
+    else
+        @errors = ''
+        @person.errors.full_messages.each do |message|
+            @errors = "#{@errors} #{message}."
+        end
+        erb :"/people/edit"
+    end
 end
 
 delete '/people/:id' do
