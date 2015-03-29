@@ -1,6 +1,8 @@
 require 'sinatra'
 set :bind, '0.0.0.0'
 
+#@note=""
+
 get '/people' do
     @people = Person.all
     erb :"/people/index"
@@ -45,6 +47,7 @@ end
 
 delete '/people/:id' do
     person = Person.find(params[:id])
+#    @note="You deleted #{person.first_name} #{person.last_name}!"
     person.destroy
     redirect "/people"
 end
