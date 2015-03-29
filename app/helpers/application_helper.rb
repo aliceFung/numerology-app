@@ -12,8 +12,7 @@ module ApplicationHelper
         if person.new_record?
             @action = "/people"
         else
-            @action ="/people/#{@person.id}"
-            
+            @action = "/people/#{person.id}"
         end
         @action
     end
