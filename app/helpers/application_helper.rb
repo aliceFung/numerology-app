@@ -29,9 +29,9 @@ module ApplicationHelper
     
     def people_form_class(person)
         if person.new_record?
-            @class = "new-person"
+            @class = "bg-info"
         else
-            @class = "edit-person"
+            @class = "bg-warning"
         end
         @class
     end

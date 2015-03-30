@@ -10,9 +10,21 @@
 }
 
 .errors {
-    color=red;
+    color=tomato;
     font-weight=bold;
-    border: 1px solid red;
+    border: 1px solid tomato;
     padding: 5px;
     margin-bottom: 5px;
+}
+
+p#about { 
+    color: turquoise;
+    font-family: impact;
+    letter-spacing: 5px;
+    word-spacing: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    background: grey;
+    border: 8px dashed white;
+    padding: 10px;
 }

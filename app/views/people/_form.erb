@@ -1,7 +1,8 @@
 <% if !@errors.nil? %>
-    <p class="errors">
+    <div class="text-danger">
+        <p class="bg-danger">
    <%= "#{@errors}" %>
-    </p>
+        </p> </div>
 <% end %>
 
 <form action="<%= people_form_action(@person) %>" method="post" id ="<%= people_form_id(@person) %>" class="<%= people_form_class(@person) %>">
